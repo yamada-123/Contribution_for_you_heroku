@@ -5,7 +5,7 @@
 ●困っている人をみんなで助けるためのアプリ
 
 # バージョン情報
-●Ruby 2.6.5
+●Ruby 2.6.5  
 ●Rails 5.2.4
 
 # 機能一覧
@@ -27,22 +27,22 @@
 # 使用予定gem一覧
 
 ## ログイン機能
-● devise
+● devise  
 
-##　アドミン機能
-● rails_admin
-● cancancan
+## アドミン機能  
+● rails_admin    
+● cancancan  
 
 ## 画像機能
-● carrierwave
-● mini_magick
+● carrierwave  
+● mini_magick  
 
 ## デバッグ
-● pry-rails
+● pry-rails  
 
 ## テスト
-● rspec-rails
-● faker
-● launchy
-● capybara
-● webdrivers
+● rspec-rails  
+● faker  
+● launchy  
+● capybara  
+● webdrivers  
