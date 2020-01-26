@@ -15,15 +15,15 @@
 - [ ] お気に入り機能
 
 # カタログ設計
-https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit#gid=0
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
 # テーブル設計
-https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit#gid=1717467146
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
 # ER図
-https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit#gid=1616069971
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
 # 画面遷移図
-https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit#gid=1776947398
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
 # ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit#gid=620340787
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
 # 使用予定gem一覧
 
 ## ログイン機能
