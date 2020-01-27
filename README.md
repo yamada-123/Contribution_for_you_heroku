@@ -13,6 +13,7 @@
 - [ ] ログイン機能
 - [ ] 画像、文章の投稿機能
 - [ ] お気に入り機能
+- [ ] 検索機能
 
 # カタログ設計
 https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
