@@ -30,6 +30,9 @@ https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9
 ## ログイン機能
 ● devise  
 
+## 検索機能
+● ransack
+
 ## アドミン機能  
 ● rails_admin    
 ● cancancan  
