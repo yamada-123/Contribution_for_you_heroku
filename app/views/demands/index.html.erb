@@ -14,7 +14,6 @@
     <td><%= demand.title %></td>
     <td><%= demand.content %></td>
     <td><%= image_tag(demand.picture.url) %></td>
-
     <td><%= link_to '詳細を確認する',demand_path(demand.id) %></td>
     <td><%= link_to '悩み事を編集する', edit_demand_path(demand.id) %></td>
     <td><%= link_to '悩み事を削除する',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } %></td>
