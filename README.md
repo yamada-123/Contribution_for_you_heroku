@@ -1,24 +1,56 @@
 # README
+# Contribution for you
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 概要
+●自分の持っている技術を困っている方に提供できるアプリ
 
-Things you may want to cover:
+# バージョンの情報
+●Ruby 2.6.5  
+●Rails 5.2.4
 
-* Ruby version
+# 機能一覧
+- [ ] ユーザー登録機能
+- [ ] ログイン機能
+- [ ] 画像、文章の投稿機能
+- [ ] お気に入り機能
+- [ ] 検索機能
+- [ ] アドミン機能
+- [ ] メッセージ機能
+- [ ] コメント機能
+- [ ] ラベル機能
 
-* System dependencies
+# カタログ設計
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
+# テーブル設計
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
+# ER図
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
+# 画面遷移図
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
+# ワイヤーフレーム
+https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9S6s/edit?usp=sharing
+# 使用予定gem一覧
 
-* Configuration
+## ログイン機能
+● devise  
 
-* Database creation
+## 検索機能
+● ransack
 
-* Database initialization
+## アドミン機能  
+● rails_admin    
+● cancancan  
 
-* How to run the test suite
+## 画像機能
+● carrierwave  
+● mini_magick  
 
-* Services (job queues, cache servers, search engines, etc.)
+## デバッグ
+● pry-rails  
 
-* Deployment instructions
-
-* ...
+## テスト
+● rspec-rails  
+● faker  
+● launchy  
+● capybara  
+● webdrivers  
