@@ -1,0 +1,24 @@
+<h1>スキル一覧</h1>
+<p><%= notice %></p>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>写真</th>
+  </tr>
+
+<% @supplies.each do |supply| %>
+  <tr>
+    <td><%= supply.title %></td>
+    <td><%= supply.content %></td>
+    <td><%= image_tag(supply.picture.url) %></td>
+
+    <td><%= link_to '詳細を確認する', supply_path(supply.id) %></td>
+    <td><%= link_to 'スキル投稿を編集する',edit_supply_path(supply.id),data: { confirm: '本当に編集しますか?'} %></td>
+    <td><%= link_to 'スキル投稿を削除する', supply_path(supply.id), method: :delete, data: { confirm: '本当に削除しますか? '} %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新しくスキルを投稿する', new_supply_path %>

@@ -1,0 +1,19 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @supply,url: supplies_path, local: true ) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :picture_cache %>
+
+  <p>タイトル:<%= @supply.title %></p>
+  <p>内容:<%= @supply.content %></p>
+  <!--確認画面でアップロードした画像を表示させるための記述-->
+  <p>イメージ写真:<%= image_tag(@supply.picture.url)if @supply.picture && @supply.picture.url %></p>
+  <%= form.submit "登録する" %>
+  <% end %>
+
+  <!--<%= link_to '戻る', :back %>--><!--これだと、戻った時に入力内容が初期化される-->
+  <%= form_with(model: @supply, url: new_supply_path, local: true, method: "get") do |form|%>
+  <%= form.hidden_field :picture_cache %>
+<%= form.submit "戻る", name: 'back' %>
+  <% end %>
