@@ -39,7 +39,7 @@ https://docs.google.com/spreadsheets/d/1Zb4_xrfUULUkdokTNq4H1IpElxdYa0Hbg4UZ8RX9
 
 ## アドミン機能  
 ● rails_admin    
-● cancancan  
+● cancan
 
 ## 画像機能
 ● carrierwave  

@@ -13,6 +13,9 @@ module Contribution
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     #imageuploaderを読み込む
 
+    config.i18n.default_locale = :ja
+    #日本語化設定
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,

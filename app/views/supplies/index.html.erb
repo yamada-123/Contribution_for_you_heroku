@@ -1,4 +1,8 @@
+<% if current_user.try(:admin?) %>
+  <h1>スキル一覧(管理者でログインしています)</h1>
+<% else %>
 <h1>スキル一覧</h1>
+<% end %>
 <p><%= notice %></p>
 
 <table>

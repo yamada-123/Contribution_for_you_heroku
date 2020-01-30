@@ -1,5 +1,6 @@
 class DemandsController < ApplicationController
   before_action :set_demand, only: [:show,:edit,:update,:destroy]
+  before_action :authenticate_user! #ログインユーザーのみ閲覧と投稿可能
 
   def index
     @demands = Demand.all
