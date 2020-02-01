@@ -13,6 +13,8 @@
     <% if user_signed_in? %>
       <%= link_to "困り事投稿一覧", demands_path %>
       <%= link_to "スキル投稿一覧", supplies_path %>
+      <%= link_to "ユーザー一覧画面", users_path%>
+      <%= link_to "管理者画面", "/admin"%>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
@@ -21,9 +23,11 @@
 
     <% if notice %>
       <p class = "alert alert-notice"><%= notice %></p>
+      <%# binding.pry %>
     <% end %>
     <% if alert %>
       <p class = "alert alert-error"><%= alert %></p>
+      <%# binding.pry %>
     <% end %>
 
     <%= yield %>

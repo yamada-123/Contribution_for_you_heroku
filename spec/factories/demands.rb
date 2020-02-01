@@ -1,11 +1,14 @@
 FactoryBot.define do
-  factory :demand do
+  factory :demand,class: Demand do
     title { 'ひらがな'}
     content { 'あ' }
     picture { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'))}
-    #picture { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'), 'image/jpeg')}
-    # factory :demand do
-    #   avatar  { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'))}
-    # end
+    user_id {'1'}
+  end
+  factory :second_demand,class: Demand do
+    title {'ひらがな'}
+    content {'い'}
+    picture {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'))}
+    user_id {'1'}
   end
 end

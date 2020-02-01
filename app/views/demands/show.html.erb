@@ -1,4 +1,12 @@
 <h1>悩み事詳細画面</h1>
 <p>タイトル: <%= @demand.title %></p>
 <p>内容: <%= @demand.content %></p>
-<p>イメージ写真: <%= image_tag @demand.picture.url %></p>
+<p>イメージ写真: <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
+
+<% unless @demand.user_id == current_user.id %><!--demand投稿主のuseridと現在ログインのuseridが同じでなければお気に入りボタン表示-->
+  <% if @favorite_demand.present? %><!--@favorite_demandがnilでなければお気に入り解除ボタン-->
+    <%= link_to 'お気に入り解除', favorite_demand_path(id: @favorite_demand.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorite_demands_path(demand_id: @demand.id),method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

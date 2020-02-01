@@ -1,0 +1,19 @@
+<h1>悩み事投稿お気に入り一覧</h1>
+<table>
+  <tr>
+    <th>投稿者</th>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>写真</th>
+  </tr>
+
+<% @favorite_demands_demands.each do |favorite_demands_demand| %>
+  <tr>
+    <td><%= favorite_demands_demand.user.name %></td>
+    <td><%= favorite_demands_demand.title %></td>
+    <td><%= favorite_demands_demand.content %></td>
+    <td><%= image_tag(favorite_demands_demand.picture.url) if favorite_demands_demand.picture && favorite_demands_demand.picture.url%></td>
+  </tr>
+</table>
+<% end %>
+<p><%= link_to '悩み事一覧へ',demands_path %></p>

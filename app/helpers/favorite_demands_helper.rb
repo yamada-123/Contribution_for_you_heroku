@@ -1,0 +1,2 @@
+module FavoriteDemandsHelper
+end

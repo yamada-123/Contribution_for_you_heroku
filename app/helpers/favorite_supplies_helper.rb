@@ -1,0 +1,2 @@
+module FavoriteSuppliesHelper
+end

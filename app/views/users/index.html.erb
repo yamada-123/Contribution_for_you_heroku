@@ -1,0 +1,21 @@
+<h1>ユーザー一覧</h1>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>写真</th>
+    <th>地域</th>
+    <th>メールアドレス</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= image_tag(user.picture.url) if user.picture && user.picture.url  %></td>
+    <td><%= user.region %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to '詳細を確認する', user_path(user.id)%></td>
+    <td><%= link_to 'マイページ編集', edit_user_registration_path(user.id) if current_user.id == user.id%></td>
+  </tr>
+<% end %>
+</table>

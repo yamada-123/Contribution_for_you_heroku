@@ -1,5 +1,6 @@
 class SuppliesController < ApplicationController
   before_action :set_supply, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! #ログインユーザーのみアクセス許可
   def index
     @supplies = Supply.all
   end
@@ -10,6 +11,7 @@ class SuppliesController < ApplicationController
 
   def create
     @supply = Supply.new(supply_params)
+    @supply.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -24,6 +26,7 @@ class SuppliesController < ApplicationController
   end
 
   def show
+    @favorite_supply = current_user.favorite_supplies.find_by(supply_id: @supply.id)
     #binding.pry
     # @supply = Supply.find(params[:id])
   end

@@ -1,9 +1,10 @@
 class DemandsController < ApplicationController
   before_action :set_demand, only: [:show,:edit,:update,:destroy]
-  before_action :authenticate_user! #ログインユーザーのみ閲覧と投稿可能
+  before_action :authenticate_user! #ログインユーザーのみdemands掲示板にアクセス許可
 
   def index
     @demands = Demand.all
+    #@demands = current_user.demands 自分の投稿しか見れないようにする記述
   end
 
   def new
@@ -12,6 +13,7 @@ class DemandsController < ApplicationController
 
   def create
     @demand = Demand.new(demand_params)
+    @demand.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -23,12 +25,14 @@ class DemandsController < ApplicationController
     end
     #(title: params[:demand][:title], content: params[:demand][:content], picture: params[:demand][:picture],region: params[:demand][:region])
     #(params[:demand])
-    #binding.irb
   end
 
   def show
-    #binding.irb
     #@demand = Demand.find(params[:id])
+    @favorite_demand = current_user.favorite_demands.find_by(demand_id: @demand.id)
+    #binding.pry
+    #favorite_demandsテーブルからログイン中のユーザーがお気に入り登録している全てのレコードを抽出
+    
   end
 
   def edit
@@ -55,6 +59,7 @@ class DemandsController < ApplicationController
   def confirm
     #binding.pry
     @demand = Demand.new(demand_params)
+    @demand.user_id = current_user.id
     render :new if @demand.invalid?
   end
 

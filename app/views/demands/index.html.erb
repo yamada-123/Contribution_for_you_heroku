@@ -6,24 +6,26 @@
 <p><%= notice %></p>
 <table>
   <tr>
+    <th>投稿者</th>
     <th>タイトル</th>
     <th>内容</th>
-    <th>イメージ写真</th>
-    <th>地域</th>
-    <th>カテゴリ</th>
+    <th>写真</th>
   </tr>
 
 <% @demands.each do |demand| %>
   <tr>
+    <td><%= demand.user.name%></td>
     <td><%= demand.title %></td>
     <td><%= demand.content %></td>
-    <td><%= image_tag(demand.picture.url) %></td>
+    <td><%= image_tag(demand.picture.url)if demand.picture && demand.picture.url %></td>
     <td><%= link_to '詳細を確認する',demand_path(demand.id) %></td>
-    <td><%= link_to '悩み事を編集する', edit_demand_path(demand.id) %></td>
-    <td><%= link_to '悩み事を削除する',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } %></td>
+    <td><%= link_to '悩み事を編集する', edit_demand_path(demand.id) if current_user.id == demand.user.id %></td>
+    <td><%= link_to '悩み事を削除する',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } if current_user.id == demand.user.id %></td>
     
   </tr>
 <% end %>
 </table>
 
 <%= link_to '新しく悩み事を投稿する', new_demand_path %>
+<%= link_to '自分のプロフィール画面', user_path(current_user.id)%>
+<%= link_to '悩み事投稿お気に入り一覧へ',favorite_demands_path %>
