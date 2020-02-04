@@ -10,3 +10,13 @@
     <%= link_to 'お気に入り登録',favorite_supplies_path(supply_id: @supply.id),method: :post,class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+<br><br><br>
+<strong>コメント一覧</strong>
+<div id = "comment_supplies_area">
+  <!--投稿されたコメント一覧をスキルの詳細ページに表示するためのrnder -->
+  <%= render partial: "comment_supplies/index",locals: { comment_supplies: @comment_supplies, supply: @supply }%> 
+                                        <!--commnet_suppliesはrender先に引き渡す-->  <!--@comment_suppliesと@supplyはsuppliesコントローラーからきてる -->
+</div>
+
+<!--コメント入力欄をスキルの詳細ページに表示するためのrender -->
+<%= render partial: "comment_supplies/form",locals: { comment_supply: @comment_supply, supply: @supply }%>

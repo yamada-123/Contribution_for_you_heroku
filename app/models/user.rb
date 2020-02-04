@@ -16,6 +16,8 @@ class User < ApplicationRecord
  has_many :favorite_supplies, dependent: :destroy
  has_many :favorite_demands_demands, through: :favorite_demands, source: :demand
  has_many :favorite_supplies_supplies, through: :favorite_supplies, source: :supply
+ has_many :comment_supplies,dependent: :destroy
+ has_many :comment_demands,dependent: :destroy
 
  mount_uploader :picture, ImageUploader
 end

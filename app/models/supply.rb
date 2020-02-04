@@ -8,4 +8,5 @@ class Supply < ApplicationRecord
   has_many :favorite_supplies, dependent: :destroy
   has_many :favorite_supplies_users, through: :favorite_supplies, source: :user
   belongs_to :user
+  has_many :comment_supplies, dependent: :destroy
 end

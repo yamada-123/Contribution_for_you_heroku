@@ -10,3 +10,12 @@
     <%= link_to 'お気に入りする', favorite_demands_path(demand_id: @demand.id),method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+<br><br><br>
+<p>コメント一覧</p>
+<div id = "comment_demands_area">
+  <!--投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comment_demands/index',locals: { comment_demands: @comment_demands,demand: @demand} %>
+</div>
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<%= render partial: 'comment_demands/form', locals: { comment_demand: @comment_demand,demand: @demand} %>
+

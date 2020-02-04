@@ -27,6 +27,8 @@ class SuppliesController < ApplicationController
 
   def show
     @favorite_supply = current_user.favorite_supplies.find_by(supply_id: @supply.id)
+    @comment_supplies = @supply.comment_supplies
+    @comment_supply = @supply.comment_supplies.build
     #binding.pry
     # @supply = Supply.find(params[:id])
   end

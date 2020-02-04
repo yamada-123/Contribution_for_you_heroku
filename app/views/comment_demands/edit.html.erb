@@ -1,0 +1,12 @@
+<h2>コメントを編集する</h2>
+<%= form_with(model: [@demand, @comment_demand],local: true) do |form|%>
+
+  <div class = "field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

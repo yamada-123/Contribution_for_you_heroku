@@ -1,0 +1,22 @@
+<!--この記述がdemandの詳細画面に表示されるコメント入力欄になる -->
+<%= form_with(model: [demand, comment_demand],remote: true) do |form|%>
+  <% if comment_demand.errors.any? %>
+    <div id = "error_explanation">
+      <h2><%= pluralize(comment_demand.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% comment_demand.errors.full_messages.each do |message| %>
+        <li><%= message%></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>投稿者</th>
+    <th>内容</th>
+  </tr>
+
+  <% comment_supplies.each do |comment_supply| %>
+    <% if comment_supply.id.present? %>
+      <tr>
+        <td><%= comment_supply.user.name %></td>
+        <td><%= comment_supply.content %></td>
+        <td><%= link_to "コメントを編集する",edit_supply_comment_supply_path(id: comment_supply.id,supply_id: comment_supply.supply_id) if current_user.id == comment_supply.user_id %></td>
+        <td><%= link_to "コメントを削除する",supply_comment_supply_path(id: comment_supply.id, supply_id: comment_supply.supply_id), method: :delete if current_user.id == comment_supply.user_id %></td>
+      </tr>
+    <% end %>
+  <% end %>
+
+</table>

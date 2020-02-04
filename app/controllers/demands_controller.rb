@@ -30,6 +30,8 @@ class DemandsController < ApplicationController
   def show
     #@demand = Demand.find(params[:id])
     @favorite_demand = current_user.favorite_demands.find_by(demand_id: @demand.id)
+    @comment_demands = @demand.comment_demands
+    @comment_demand = @demand.comment_demands.build
     #binding.pry
     #favorite_demandsテーブルからログイン中のユーザーがお気に入り登録している全てのレコードを抽出
     

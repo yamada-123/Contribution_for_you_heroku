@@ -1,0 +1,17 @@
+  <table>
+  <tr>
+    <th>投稿者</th>
+    <th>内容</th>
+  </tr>
+
+  <% comment_demands.each do |comment_demand| %>
+    <% if comment_demand.id.present? %>
+      <tr>
+        <td><%= comment_demand.user.name %></td>
+        <td><%= comment_demand.content %></td>
+        <td><%= link_to "コメントを編集する",edit_demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id)if current_user.id == comment_demand.user_id%></td>
+        <td><%= link_to "コメントを削除する",demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id),method: :delete if current_user.id == comment_demand.user_id%></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>

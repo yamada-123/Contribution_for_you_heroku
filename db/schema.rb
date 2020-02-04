@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_061741) do
+ActiveRecord::Schema.define(version: 2020_02_02_053308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comment_demands", force: :cascade do |t|
+    t.bigint "demand_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["demand_id"], name: "index_comment_demands_on_demand_id"
+    t.index ["user_id"], name: "index_comment_demands_on_user_id"
+  end
+
+  create_table "comment_supplies", force: :cascade do |t|
+    t.bigint "supply_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["supply_id"], name: "index_comment_supplies_on_supply_id"
+    t.index ["user_id"], name: "index_comment_supplies_on_user_id"
+  end
 
   create_table "demands", force: :cascade do |t|
     t.string "title"
@@ -67,6 +87,10 @@ ActiveRecord::Schema.define(version: 2020_02_01_061741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comment_demands", "demands"
+  add_foreign_key "comment_demands", "users"
+  add_foreign_key "comment_supplies", "supplies"
+  add_foreign_key "comment_supplies", "users"
   add_foreign_key "demands", "users"
   add_foreign_key "supplies", "users"
 end
