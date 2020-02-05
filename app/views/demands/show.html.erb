@@ -1,4 +1,4 @@
-<h1>悩み事詳細画面</h1>
+<h1>困り事詳細</h1>
 <p>タイトル: <%= @demand.title %></p>
 <p>内容: <%= @demand.content %></p>
 <p>イメージ写真: <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
@@ -10,7 +10,13 @@
     <%= link_to 'お気に入りする', favorite_demands_path(demand_id: @demand.id),method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<br><br><br>
+<br>
+<%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: @demand.user_id), method: :post if @demand.user_id != current_user.id%>
+
+
+
+
+<br><br><br><br>
 <p>コメント一覧</p>
 <div id = "comment_demands_area">
   <!--投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->

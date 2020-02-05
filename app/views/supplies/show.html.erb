@@ -1,4 +1,4 @@
-<h1>スキル詳細画面</h1>
+<h1>スキル詳細</h1>
 <p>タイトル: <%= @supply.title %></p>
 <p>内容: <%= @supply.content %></p>
 <p>写真: <%= image_tag @supply.picture.url %></p>
@@ -10,7 +10,9 @@
     <%= link_to 'お気に入り登録',favorite_supplies_path(supply_id: @supply.id),method: :post,class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<br><br><br>
+<br>
+<%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: @supply.user_id), method: :post if @supply.user_id != current_user.id%>
+<br><br><br><br><br>
 <strong>コメント一覧</strong>
 <div id = "comment_supplies_area">
   <!--投稿されたコメント一覧をスキルの詳細ページに表示するためのrnder -->

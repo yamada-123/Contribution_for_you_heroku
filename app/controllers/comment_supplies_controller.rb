@@ -21,7 +21,7 @@ class CommentSuppliesController < ApplicationController
 
   def update
     @comment_supply = CommentSupply.find(params[:id])
-    binding.pry
+    #binding.pry
     if @comment_supply.user_id == current_user.id
       @comment_supply.update(comment_supply_params)
       redirect_to supply_path(@comment_supply.supply_id), notice: "コメントを編集しました"

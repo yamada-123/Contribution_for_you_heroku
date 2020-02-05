@@ -25,6 +25,10 @@ Rails.application.routes.draw do
 
   resources :users 
 
+  resources :conversations do
+    resources :messages
+  end
+
   resources :favorite_demands
   resources :favorite_supplies
 

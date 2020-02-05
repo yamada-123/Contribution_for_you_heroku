@@ -3,3 +3,5 @@
 <p>名前:<%= @user.name %></p>
 <p>メールアドレス:<%= @user.email%></p>
 <p>写真<br><%= image_tag(@user.picture.url) if @user.picture && @user.picture.url %></p>
+
+<%= link_to 'メッセージ一覧',conversations_path %>

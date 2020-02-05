@@ -1,7 +1,7 @@
 <% if current_user.try(:admin?) %>
-  <h1>悩み事一覧(管理者でログインしています。)</h1>
+  <h1>困り事一覧(管理者でログインしています。)</h1>
 <% else %>
-<h1>悩み事一覧</h1>
+<h1>困り事一覧</h1>
 <% end %>
 <p><%= notice %></p>
 <table>
@@ -18,14 +18,13 @@
     <td><%= demand.title %></td>
     <td><%= demand.content %></td>
     <td><%= image_tag(demand.picture.url)if demand.picture && demand.picture.url %></td>
-    <td><%= link_to '詳細を確認する',demand_path(demand.id) %></td>
-    <td><%= link_to '悩み事を編集する', edit_demand_path(demand.id) if current_user.id == demand.user.id %></td>
-    <td><%= link_to '悩み事を削除する',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } if current_user.id == demand.user.id %></td>
+    <td><%= link_to '詳細',demand_path(demand.id) %></td>
+    <td><%= link_to '編集', edit_demand_path(demand.id) if current_user.id == demand.user.id %></td>
+    <td><%= link_to '削除',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } if current_user.id == demand.user.id %></td>
     
   </tr>
 <% end %>
 </table>
 
-<%= link_to '新しく悩み事を投稿する', new_demand_path %>
-<%= link_to '自分のプロフィール画面', user_path(current_user.id)%>
-<%= link_to '悩み事投稿お気に入り一覧へ',favorite_demands_path %>
+<%= link_to '新しく困り事を投稿する', new_demand_path %>
+<%= link_to '困り事投稿お気に入り一覧へ',favorite_demands_path %>

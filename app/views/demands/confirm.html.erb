@@ -9,7 +9,7 @@
   <p>タイトル:<%= @demand.title %></p>
   <p>内容: <%= @demand.content %></p>
   <p>イメージ写真: <%= @demand.picture %></p>
-  <%= form.submit "悩み事を投稿する"%>
+  <%= form.submit "困り事を投稿する"%>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
 <% end %> 
@@ -38,7 +38,7 @@
   <p>内容: <%= @demand.content %></p>
   <!--確認画面でアップロードした画像を表示させるための記述-->
   <p>イメージ写真:<%= image_tag(@demand.picture.url) if @demand.picture && @demand.picture.url %></p>
-  <%= form.submit "悩み事を投稿する"%>
+  <%= form.submit "困り事を投稿する"%>
 <% end %>
   
 <%= form_with(model: @demand, url: new_demand_path, local: true, method: "get") do |form| %>

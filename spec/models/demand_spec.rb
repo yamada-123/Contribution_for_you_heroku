@@ -12,7 +12,7 @@ RSpec.describe Demand, type: :model do
   end
   it 'titleとcontentが両方入力されていたら通る' do
     demand = Demand.new(title: '成功',content: '成功')
-    binding.pry
+    #binding.pry
     expect(demand).to be_valid
   end
 end

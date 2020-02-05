@@ -12,7 +12,7 @@ RSpec.describe Supply, type: :model do
   end
   it '両方入力されていれば通る' do
     supply = Supply.new(title: '成功',content:'失敗')
-    binding.pry
+    #binding.pry
     expect(supply).to be_valid
   end
 end

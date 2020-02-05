@@ -18,7 +18,7 @@ class DemandsController < ApplicationController
       render :new
     else
       if @demand.save
-      redirect_to demands_path, notice: "悩み事投稿しました!"
+      redirect_to demands_path, notice: "困り事を投稿しました!"
       else
       render :new
       end
@@ -46,7 +46,7 @@ class DemandsController < ApplicationController
     #@demand = Demand.find(params[:id])
     #binding.pry
     if @demand.update(demand_params)
-      redirect_to demands_path, notice: "悩み事を編集しました!"
+      redirect_to demands_path, notice: "困り事を編集しました!"
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class DemandsController < ApplicationController
   def destroy
     #@demand = Demand.find(params[:id])
     @demand.destroy
-    redirect_to demands_path, notice:"悩み事を削除しました!"
+    redirect_to demands_path, notice:"困り事を削除しました!"
   end
 
   def confirm
