@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_082358) do
+ActiveRecord::Schema.define(version: 2020_02_06_080430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,28 @@ ActiveRecord::Schema.define(version: 2020_02_04_082358) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "labelling_demands", force: :cascade do |t|
+    t.bigint "demand_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["demand_id"], name: "index_labelling_demands_on_demand_id"
+    t.index ["label_id"], name: "index_labelling_demands_on_label_id"
+  end
+
+  create_table "labelling_supplies", force: :cascade do |t|
+    t.bigint "label_id"
+    t.bigint "supply_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_labelling_supplies_on_label_id"
+    t.index ["supply_id"], name: "index_labelling_supplies_on_supply_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "category"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -113,6 +135,10 @@ ActiveRecord::Schema.define(version: 2020_02_04_082358) do
   add_foreign_key "comment_supplies", "supplies"
   add_foreign_key "comment_supplies", "users"
   add_foreign_key "demands", "users"
+  add_foreign_key "labelling_demands", "demands"
+  add_foreign_key "labelling_demands", "labels"
+  add_foreign_key "labelling_supplies", "labels"
+  add_foreign_key "labelling_supplies", "supplies"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "supplies", "users"

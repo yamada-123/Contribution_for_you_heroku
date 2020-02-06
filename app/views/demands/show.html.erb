@@ -2,6 +2,13 @@
 <p>タイトル: <%= @demand.title %></p>
 <p>内容: <%= @demand.content %></p>
 <p>イメージ写真: <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
+<p>ラベル <br>
+<% @demand.labels.all.each do |label| %>
+  <%= label.category %>
+  <br>
+  <% end %> </p>
+
+
 
 <% unless @demand.user_id == current_user.id %><!--demand投稿主のuseridと現在ログインのuseridが同じでなければお気に入りボタン表示-->
   <% if @favorite_demand.present? %><!--@favorite_demandがnilでなければお気に入り解除ボタン-->

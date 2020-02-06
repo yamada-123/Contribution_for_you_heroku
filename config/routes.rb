@@ -23,11 +23,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources:labels
+
   resources :users 
 
   resources :conversations do
     resources :messages
   end
+
+  resources :labelling_demands,only: [:create, :destroy]
+  resources :labelling_supplies,only: [:create, :destroy]
 
   resources :favorite_demands
   resources :favorite_supplies

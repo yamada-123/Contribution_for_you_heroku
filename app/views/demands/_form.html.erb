@@ -25,5 +25,16 @@
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>
   </div>
+  <div class="field">
+    <% Label.all.each do |label| %>
+    <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+    <!--f.check_box:label_idsとは...."label_ids"=>["1","2","4","8"]のような形のハッシュキーを持つパラメータが送れる-->
+    <!--mutipleとは...複数チェックボックスで配列形式のパラメータを送れる-->
+    <!--checked:label[:checked],disabled:label[:disabled]の記述でチェックがついたときに(label[:id]に入っている値を送れる)-->
+    <!--include_hidden:falseは、チェックのつかなかったラベルの値を送信しないようにする記述。-->
+    <label class='badge badge-secondary'><%= label.category %></label>
+    <% end %>
+</div>
+
   <%= form.submit %>
 <% end %>

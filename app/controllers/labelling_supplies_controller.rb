@@ -1,0 +1,2 @@
+class LabellingSuppliesController < ApplicationController
+end

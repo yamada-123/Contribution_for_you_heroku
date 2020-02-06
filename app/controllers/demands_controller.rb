@@ -59,21 +59,39 @@ class DemandsController < ApplicationController
   end
 
   def confirm
-    #binding.pry
-    @demand = Demand.new(demand_params)
+    #@demand = Demand.new(demand_params)
+    @demand = current_user.demands.build(demand_params)
     @demand.user_id = current_user.id
     render :new if @demand.invalid?
+    binding.pry
   end
 
   
   private
     
   def demand_params
-    params.require(:demand).permit(:title,:content,:picture, :picture_cache)
-    #画像データそのものを取り扱うパラメーター
+    params.require(:demand).permit(:title,:content,:picture, :picture_cache, label_ids: [] )
+    #画像データそのものを取り扱うパラメータ
   end
 
   def set_demand
     @demand = Demand.find(params[:id])
   end
 end
+
+# class A 
+#   label_ids = "a"
+# end
+
+# new A(label_ids: 'a')
+
+# class User
+#   has_many :products, source: :product, as: :products, foreign_key: :user_id
+# end
+
+# class Product
+#   belongs_to :user
+# end
+
+# @user.products
+

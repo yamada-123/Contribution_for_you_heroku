@@ -16,6 +16,7 @@ class SuppliesController < ApplicationController
       render :new
     else
       if @supply.save
+        binding.pry
     #Supply.create(params[:supply])
     #Supply.create(title: params[:supply][:title],content: params[:supply][:content],picture: params[:supply][:picture])
         redirect_to new_supply_path, notice: 'スキルを投稿しました。'
@@ -53,13 +54,14 @@ class SuppliesController < ApplicationController
 
   def confirm
     @supply = Supply.new(supply_params)
+    @supply.user_id = current_user.id
     render :new if @supply.invalid?
   end
 
   private
 
   def supply_params
-    params.require(:supply).permit(:title,:content,:picture, :picture_cache)
+    params.require(:supply).permit(:title,:content,:picture, :picture_cache, label_ids: [])
     #picture_cacheは、確認画面の実装を挟む時に必要
   end
 
