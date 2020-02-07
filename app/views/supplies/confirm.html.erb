@@ -1,9 +1,12 @@
-<h3>以下の内容で、送信する。</h3>
+<h3>以下の内容で、送信!!!</h3>
 
 <%= form_with(model: @supply,url: supplies_path, local: true ) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :picture_cache %>
+    <% @supply.label_ids.each do |label| %>
+  <%= form.hidden_field :label_ids, multiple: true, value: label %>
+  <% end %>
 
   <p>タイトル:<%= @supply.title %></p>
   <p>内容:<%= @supply.content %></p>

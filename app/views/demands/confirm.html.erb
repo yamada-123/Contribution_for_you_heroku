@@ -1,43 +1,19 @@
-<% if false %>
 <h3>以下の内容で、送信する。</h3>
 
-<%= form_with(model: @demand, local: true,url: demands_path) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.hidden_field :picture %>
-
-  <p>タイトル:<%= @demand.title %></p>
-  <p>内容: <%= @demand.content %></p>
-  <p>イメージ写真: <%= @demand.picture %></p>
-  <%= form.submit "困り事を投稿する"%>
-  <%= form.submit "戻る", name: 'back' %>
-<% end %>
-<% end %> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>以下の内容で、送信する。</h3>
-
-<%= form_with(model: @demand, url: demands_path, local: true) do |form| %>
+<%= form_with(model: @demand,url: demands_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :picture_cache %>
+  <% @demand.label_ids.each do |label| %>
+  <%= form.hidden_field :label_ids, multiple: true, value: label %>
+  <% end %>
+
 
   <p>タイトル:<%= @demand.title %></p>
   <p>内容: <%= @demand.content %></p>
   <!--確認画面でアップロードした画像を表示させるための記述-->
   <p>イメージ写真:<%= image_tag(@demand.picture.url) if @demand.picture && @demand.picture.url %></p>
+  <p>ラベル:<% @demand.labels.each  do |label| %><%= label.category %><%= "。"%><% end %></p>
   <%= form.submit "困り事を投稿する"%>
 <% end %>
   

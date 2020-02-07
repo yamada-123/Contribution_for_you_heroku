@@ -14,6 +14,7 @@ class DemandsController < ApplicationController
   def create
     @demand = Demand.new(demand_params)
     @demand.user_id = current_user.id
+    binding.pry
     if params[:back]
       render :new
     else
@@ -60,7 +61,7 @@ class DemandsController < ApplicationController
 
   def confirm
     #@demand = Demand.new(demand_params)
-    @demand = current_user.demands.build(demand_params)
+    @demand = Demand.new(demand_params)
     @demand.user_id = current_user.id
     render :new if @demand.invalid?
     binding.pry

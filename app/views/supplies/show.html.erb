@@ -1,7 +1,12 @@
 <h1>スキル詳細</h1>
 <p>タイトル: <%= @supply.title %></p>
 <p>内容: <%= @supply.content %></p>
-<p>写真: <%= image_tag @supply.picture.url %></p>
+<p><p>イメージ写真: <%= image_tag @supply.picture.url if @supply.picture && @supply.picture.url%></p></p>
+<p>ラベル <br>
+<% @supply.labels.all.each do |label| %>
+  <%= label.category %>
+  <br>
+  <% end %> </p>
 
 <% unless @supply.user_id == current_user.id %>
   <% if @favorite_supply.present? %>
