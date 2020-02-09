@@ -1,4 +1,5 @@
 <h1>スキル詳細</h1>
+<p>投稿主: <%= @supply.user.name %></p>
 <p>タイトル: <%= @supply.title %></p>
 <p>内容: <%= @supply.content %></p>
 <p><p>イメージ写真: <%= image_tag @supply.picture.url if @supply.picture && @supply.picture.url%></p></p>
@@ -16,7 +17,7 @@
   <% end %>
 <% end %>
 <br>
-<%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: @supply.user_id), method: :post if @supply.user_id != current_user.id%>
+<%= link_to "#{@supply.user.name}にメッセージ",conversations_path(sender_id: current_user.id,recipient_id: @supply.user_id), method: :post if @supply.user_id != current_user.id%>
 <br><br><br><br><br>
 <strong>コメント一覧</strong>
 <div id = "comment_supplies_area">

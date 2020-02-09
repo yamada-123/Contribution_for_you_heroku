@@ -1,9 +1,10 @@
 class DemandsController < ApplicationController
   before_action :set_demand, only: [:show,:edit,:update,:destroy]
   before_action :authenticate_user! #ログインユーザーのみdemands掲示板にアクセス許可
-
+  PER = 3
   def index
-    @demands = Demand.all
+    @demands = Demand.page(params[:page]).per(PER)
+    #@demands = Demand.all
     #@demands = current_user.demands 自分の投稿しか見れないようにする記述
   end
 
@@ -14,7 +15,6 @@ class DemandsController < ApplicationController
   def create
     @demand = Demand.new(demand_params)
     @demand.user_id = current_user.id
-    binding.pry
     if params[:back]
       render :new
     else
@@ -31,16 +31,19 @@ class DemandsController < ApplicationController
   def show
     #@demand = Demand.find(params[:id])
     @favorite_demand = current_user.favorite_demands.find_by(demand_id: @demand.id)
+    #favorite_demandsテーブルからログイン中のユーザーがお気に入り登録している全てのレコードを抽出
     @comment_demands = @demand.comment_demands
     @comment_demand = @demand.comment_demands.build
     #binding.pry
-    #favorite_demandsテーブルからログイン中のユーザーがお気に入り登録している全てのレコードを抽出
     
   end
 
   def edit
     #binding.pry
     #@demand = Demand.find(params[:id])
+    if @demand.user_id != current_user.id
+      redirect_to demands_path, notice: "他人の投稿は編集できません。"
+    end
   end
 
   def update
@@ -64,7 +67,6 @@ class DemandsController < ApplicationController
     @demand = Demand.new(demand_params)
     @demand.user_id = current_user.id
     render :new if @demand.invalid?
-    binding.pry
   end
 
   

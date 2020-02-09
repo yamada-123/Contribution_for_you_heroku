@@ -20,6 +20,23 @@ class User < ApplicationRecord
  has_many :comment_demands,dependent: :destroy
 
  mount_uploader :picture, ImageUploader
+ 
+ def update_without_password(params, *options)
+  #binding.pry
+  params.delete(:current_password) 
+  #params.delete(:current_password) で current_password のパラメータを削除。
+  #binding.pry
+  if params[:password].blank? && params[:password_confirmation].blank? 
+    #パスワード変更のためのパスワード入力フィールドとその確認フィールドの両者とも空の場合のみ、パスワードなしで更新できるようにするためです。
+
+    params.delete(:password)
+    params.delete(:password_confirmation)
+  end
+
+  result = update_attributes(params, *options)
+  clean_up_passwords
+  result
+end
 end
 
 #上左から、ログイン時のパスワードを暗号化してデータベースに保存する機能。

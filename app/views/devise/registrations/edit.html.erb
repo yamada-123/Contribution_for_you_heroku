@@ -1,7 +1,7 @@
 <% if false %>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <% end %>
-<h2>ユーザーを編集する</h2>
+<h2>プロフィールを編集する</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -27,22 +27,26 @@
 
   <div class = "field">
     <%= f.label :region %><br />
-    <%= f.text_field :region,autofocus: true, autocomplete: 'region' %>
+    <%= f.select :region, "": 0, "北海道": 1, "青森": 2, "岩手": 3, "宮城": 4, "秋田":5, "山形":6, "福島":7, "茨城":8.to_i, "栃木":9, "群馬":10,
+                                  "埼玉": 11, "千葉":12, "東京":13, "神奈川":14, "新潟":15, "富山":16, "石川":17, "福井":18, "山梨":19,"長野":20,
+                                  "岐阜":21, "静岡":22, "愛知":23, "三重":24, "滋賀":25, "京都":26, "大阪":27, "兵庫":28, "奈良":29, "和歌山":30,
+                                  "鳥取":31, "島根":32, "岡山":33, "広島":34, "山口":35, "徳島":36, "香川":37, "愛媛":38, "高知":39, "福岡":40,
+                                  "佐賀":41, "長崎":42, "熊本":43, "大分":44, "宮崎":45, "鹿児島":46, "沖縄":47 %>
   </div>
 
   <div class = "field">
     <%= f.label :introduction %><br />
-    <%= f.text_field :introduction,autofocus: true, autocomplete: 'introduction'%>
+    <%= f.text_area :introduction,autofocus: true, autocomplete: 'introduction'%>
   </div>
 
   <br />
 
   <div class="field">
-    <%= f.label :new_password %> <i>(変更しないときは空白可能)</i><br />
+    <%= f.label :new_password %> <i>(変更しないときは空欄で)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum(最低6文字以上入力してください)</em>
+   <%if false%>   <em><%= @minimum_password_length %> characters minimum(最低6文字以上入力してください)</em><% end %>
     <% end %>
   </div>
 
@@ -53,10 +57,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <% if false %>
   <div class="field">
     <%= f.label :current_password %> <br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

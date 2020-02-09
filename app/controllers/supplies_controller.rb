@@ -1,8 +1,9 @@
 class SuppliesController < ApplicationController
   before_action :set_supply, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! #ログインユーザーのみアクセス許可
+  PER = 10
   def index
-    @supplies = Supply.all
+    @supplies = Supply.page(params[:page]).per(PER)
   end
 
   def new
@@ -36,6 +37,9 @@ class SuppliesController < ApplicationController
 
   def edit
     # @supply = Supply.find(params[:id])
+    if @supply.user_id != current_user.id
+      redirect_to supplies_path, notice: "他人の投稿は編集できません。"
+    end
   end
 
   def update

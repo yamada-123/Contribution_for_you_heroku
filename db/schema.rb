@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2020_02_06_080430) do
     t.string "name"
     t.string "picture"
     t.text "introduction"
-    t.string "region"
+    t.integer "region"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

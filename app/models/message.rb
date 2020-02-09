@@ -6,4 +6,9 @@ class Message < ApplicationRecord
   def message_time
     created_at.strftime("%m/%d/%y at %l:%M %p")
   end
+
+  # @message.change_read
+  # def change_read
+  #   self.object.read = true if (self.)read?
+  # end
 end
