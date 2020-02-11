@@ -4,12 +4,32 @@
 <h1>困り事一覧</h1>
 <% end %>
 <p><%= notice %></p>
+
+  <%= search_form_for @search do |f| %>
+    <%= f.label :title, "タイトル" %>
+    <%= f.search_field :title_cont %>
+    <%= f.label :user_name_cont, "ユーザー名"%>
+    <%= f.search_field :user_name_cont %>
+    <%= f.label :label_id, ""%>
+      <% Label.all.each do |label| %>
+      <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+      <label class='badge badge-secondary'><%= label.category %></label>
+      <% end %>
+    <!-- f.check_box :label_ids_cont, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id]-->
+    <!--f.check_box:label_idsとは...."label_ids"=>["1","2","4","8"]のような形のハッシュキーを持つパラメータが送れる-->
+    <!--mutipleとは...複数チェックボックスで配列形式のパラメータを送れる-->
+    <!--checked:label[:checked],disabled:label[:disabled]の記述でチェックがついたときに(label[:id]に入っている値を送れる)-->
+    <!--include_hidden:falseは、チェックのつかなかったラベルの値を送信しないようにする記述。-->
+    <%= f.submit %>
+  <% end %>
+
 <table>
   <tr>
-    <th>投稿者</th>
-    <th>タイトル</th>
+    <th><%= sort_link(@search, :name,"投稿者") %></th>
+    <th><%= sort_link(@search, :title,"タイトル") %></th>
     <th>内容</th>
     <th>写真</th>
+    <th>ラベル</th>
   </tr>
 
 <% @demands.each do |demand| %>
@@ -18,6 +38,9 @@
     <td><%= demand.title %></td>
     <td><%= demand.content %></td>
     <td><%= image_tag(demand.picture.url)if demand.picture && demand.picture.url %></td>
+      <% demand.labels.each do |label| %>
+      <td><%= label.category%></td>
+      <% end %>
     <td><%= link_to '詳細',demand_path(demand.id) %></td>
     <td><%= link_to '編集', edit_demand_path(demand.id) if current_user.id == demand.user.id %></td>
     <td><%= link_to '削除',demand_path(demand.id),method: :delete ,data: { confirm: '本当に削除しますか?' } if current_user.id == demand.user.id %></td>

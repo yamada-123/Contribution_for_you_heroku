@@ -1,9 +1,13 @@
 class SuppliesController < ApplicationController
   before_action :set_supply, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! #ログインユーザーのみアクセス許可
-  PER = 10
+  PER = 2
   def index
-    @supplies = Supply.page(params[:page]).per(PER)
+    # @supplies = Supply.page(params[:page]).per(PER)
+
+    @search = Supply.ransack(params[:q])
+    # params[q]には検索パラメーターが渡されるため、@searchという検索オブジェクトが作成される。
+    @supplies = @search.result(distinct: true).page(params[:page]).per(PER)
   end
 
   def new
@@ -17,7 +21,7 @@ class SuppliesController < ApplicationController
       render :new
     else
       if @supply.save
-        binding.pry
+        # binding.pry
     #Supply.create(params[:supply])
     #Supply.create(title: params[:supply][:title],content: params[:supply][:content],picture: params[:supply][:picture])
         redirect_to new_supply_path, notice: 'スキルを投稿しました。'
