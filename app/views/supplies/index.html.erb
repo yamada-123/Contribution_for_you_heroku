@@ -11,7 +11,7 @@
     <%= f.label :user_name_cont, "ユーザー名"%>
     <%= f.search_field :user_name_cont %>
     
-    <%= f.label :label_id, "ラベル"%>
+    <%= f.label :label_id, "カデゴリ"%>
       <% Label.all.each do |label| %>
       <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
       <label class='badge badge-secondary'><%= label.category %></label>
@@ -21,35 +21,34 @@
     <!--mutipleとは...複数チェックボックスで配列形式のパラメータを送れる-->
     <!--checked:label[:checked],disabled:label[:disabled]の記述でチェックがついたときに(label[:id]に入っている値を送れる)-->
     <!--include_hidden:falseは、チェックのつかなかったラベルの値を送信しないようにする記述。-->
-    <%= f.submit %>
+      <button type="submit" class="btn btn-primary">検索</button>
   <% end %>
 
-<table>
+<table class = "table">
   <tr>
-    <th><%= sort_link(@search, :name,"投稿者") %></th>
-    <th><%= sort_link(@search, :title,"タイトル") %></th>
-    <th>内容</th>
+    <th><%= sort_link(@search, :user_name, "投稿者") %></th>
+    <th><%= sort_link(@search, :title, "タイトル") %></th>
     <th>写真</th>
-    <th>ラベル</th>
+    <th>カデゴリ</th>
   </tr>
 
 <% @supplies.each do |supply| %>
   <tr>
     <td><%= supply.user.name%></td>
     <td><%= supply.title %></td>
-    <td><%= supply.content %></td>
     <td><%= image_tag(supply.picture.url)if supply.picture && supply.picture.url %></td>
       <% supply.labels.each do |label| %>
         <td><%= label.category%></td>
       <% end %>
 
-    <td><%= link_to '詳細', supply_path(supply.id) %></td>
-    <td><%= link_to '編集',edit_supply_path(supply.id),data: { confirm: '本当に編集しますか?'} if current_user.id == supply.user.id%></td>
-    <td><%= link_to '削除', supply_path(supply.id), method: :delete, data: { confirm: '本当に削除しますか? '} if current_user.id == supply.user.id%></td>
+    <td><%= link_to '詳細', supply_path(supply.id),class:"btn btn-primary" %></td>
+      <% if current_user.id == supply.user_id %>
+    <td><%= link_to '編集',edit_supply_path(supply.id),class:"btn btn-success" %></td>
+    <td><%= link_to '削除', supply_path(supply.id),class:"btn btn-danger",method: :delete, data: { confirm: '本当に削除しますか? '} %></td>
+      <% end %>
   </tr>
 <% end %>
 </table>
-
 <%= link_to 'スキルを投稿する', new_supply_path %>
 <%= link_to 'スキル投稿お気に入り一覧へ',favorite_supplies_path %>
 <%= paginate @supplies %>

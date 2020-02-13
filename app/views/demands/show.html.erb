@@ -1,13 +1,28 @@
-<h1>困り事詳細</h1>
-<p>投稿主: <%= @demand.user.name%></p>
-<p>タイトル: <%= @demand.title %></p>
-<p>内容: <%= @demand.content %></p>
-<p>イメージ写真: <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
-<p>ラベル <br>
-<% @demand.labels.all.each do |label| %>
-  <%= label.category %>
-  <br>
-  <% end %> </p>
+<h1> <%= @demand.title %></h1>
+<p> <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
+
+<div class = "panel panel-primary">
+  <div class = "panel-heading">詳細情報</div>
+  <div class = "panel_body">
+      <p><strong>内容:</strong> <%= @demand.content %></p>
+      <p><strong>カデゴリ</strong> <br>
+      <% @demand.labels.all.each do |label| %>
+        <%= label.category %>
+        <br>
+      <% end %> 
+  </div>
+</div>
+
+<div class = "panel panel-success">
+  <div class = "panel-heading">投稿主情報</div>
+    <div class = "panel_body">
+      <p><%= image_tag @demand.user.picture.url if @demand.user.picture && @demand.user.picture.url %></p>
+      <p><%= link_to @demand.user.name,user_path(id: @demand.user_id) %></p>
+      <p><strong>自己紹介</strong></p>
+      <p><%= @demand.user.introduction %></p>
+    </div>
+</div>
+
 
 
 
@@ -24,8 +39,8 @@
 
 
 
-<br><br><br><br>
-<p>コメント一覧</p>
+
+<h2>コメント一覧</h2>
 <div id = "comment_demands_area">
   <!--投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comment_demands/index',locals: { comment_demands: @comment_demands,demand: @demand} %>

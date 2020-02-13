@@ -5,23 +5,60 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    <header class= "header">
     <% if user_signed_in? %>
-      <%= link_to "困り事投稿一覧", demands_path %>
-      <%= link_to "スキル投稿一覧", supplies_path %>
-      <%= link_to "ユーザー一覧", users_path%>
-      <%= link_to "プロフィール",user_path(current_user.id)%>
-      <%= link_to "管理者画面", "/admin"%>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+      <div class = "btn-group">
+        <button type = "button" class = "btn btn-primary dropdown-toggle" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         困り事<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to "一覧",demands_path %></li>
+          <li><%= link_to "投稿",new_demand_path %></li>
+          <li><%= link_to "お気に入り",favorite_demands_path %></li>
+        </ul>
+      </div>
+      <div class = "btn-group">
+        <button type = "button" class = "btn btn-success dropdown-toggle" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         スキル<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to "一覧",supplies_path %></li>
+          <li><%= link_to "投稿",new_supply_path %></li>
+          <li><%= link_to "お気に入り",favorite_supplies_path %></li>
+        </ul>
+      </div>
 
+        <div class = "btn-group">
+        <button type = "button" class = "btn btn-warning dropdown-toggle" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         ユーザー<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to "一覧",users_path %></li>
+          <li><%= link_to "プロフィール",user_path(current_user.id) %></li>
+          <li><%= link_to 'メッセージ',conversations_path %></li>
+          <li><%= link_to 'プロフィール編集',edit_user_registration_path %></li>
+        </ul>
+      </div>
+
+      <% if current_user.try(:admin?) %>
+      <%= link_to "管理者画面", "/admin" ,class:"btn btn-warning"%>
+      <% end %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class:"btn btn-danger" %>
+    <% else %>
+      <%= link_to "新規登録", new_user_registration_path,class:"btn btn-primary" %>
+      <%= link_to "ログイン", new_user_session_path,class: "btn btn-success" %>
+    <% end %>
+    </header>
     <% if notice %>
       <p class = "alert alert-notice"><%= notice %></p>
       <%# binding.pry %>
@@ -30,7 +67,14 @@
       <p class = "alert alert-error"><%= alert %></p>
       <%# binding.pry %>
     <% end %>
-
+    <div class = "wrapper">
+      <div class = "container">
     <%= yield %>
+      </div>
+    </div>
+    <footer>
+    <p>Contribution for you</p>
+    <p>© 2020 </p>
+  </footer>
   </body>
 </html>

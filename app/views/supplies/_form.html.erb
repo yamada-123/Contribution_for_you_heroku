@@ -12,11 +12,11 @@
 
   <div class = "supply_title">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_area :title %>
   </div>
   <div class = "supply_content">
     <%= form.label :content %>
-    <%= form.text_field :content%>
+    <%= form.text_area :content%>
   </div>
   <div class = "supply_picture">
     <%= form.label :picture %>
@@ -36,7 +36,7 @@
     <label class='badge badge-secondary'><%= label.category %></label>
     <% end %>
 </div>
-  <%= form.submit %>
+  <button type="submit" class="btn btn-primary">投稿</button>
 <% end %>
 
 <%= link_to "スキル一覧画面に戻る", supplies_path %>

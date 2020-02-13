@@ -1,14 +1,14 @@
 class DemandsController < ApplicationController
   before_action :set_demand, only: [:show,:edit,:update,:destroy]
   before_action :authenticate_user! #ログインユーザーのみdemands掲示板にアクセス許可
-  PER = 2
+  PER = 5
   def index
     # @demands = Demand.page(params[:page]).per(PER)
     #@demands = current_user.demands 自分の投稿しか見れないようにする記述
     @search = Demand.ransack(params[:q])
     # params[q]には検索パラメーターが渡されるため、@searchという検索オブジェクトが作成される。
     @labels = Label.all
-    @demands = @search.result(distinct: true).includes(:labels).page(params[:page]).per(PER)
+    @demands = @search.result.includes(:labels,:user).page(params[:page]).per(PER)
   end
 
   def new

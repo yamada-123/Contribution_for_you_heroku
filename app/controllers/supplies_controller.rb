@@ -7,7 +7,7 @@ class SuppliesController < ApplicationController
 
     @search = Supply.ransack(params[:q])
     # params[q]には検索パラメーターが渡されるため、@searchという検索オブジェクトが作成される。
-    @supplies = @search.result(distinct: true).page(params[:page]).per(PER)
+    @supplies = @search.result.includes(:user).page(params[:page]).per(PER)
   end
 
   def new

@@ -11,10 +11,10 @@
                                   "鳥取":31, "島根":32, "岡山":33, "広島":34, "山口":35, "徳島":36, "香川":37, "愛媛":38, "高知":39, "福岡":40,
                                   "佐賀":41, "長崎":42, "熊本":43, "大分":44, "宮崎":45, "鹿児島":46, "沖縄":47 %>
       
-  <%= f.submit "検索" %>
+  <button type="submit" class="btn btn-primary">検索</button>
 <% end %>
 
-<table>
+<table class = "table">
   <tr>
     <th><%= sort_link(@search, :name) %></th>
     <th>写真</th>
@@ -29,9 +29,13 @@
     <td><%= image_tag(user.picture.url) if user.picture && user.picture.url  %></td>
     <td><%= display_region(user.region) %></td>
     <td><%= user.email %></td>
-    <td><%= link_to '詳細', user_path(user.id)%></td>
-    <td><%= link_to 'マイページ編集', edit_user_registration_path(user.id) if current_user.id == user.id%></td>
-    <td><%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: user.id), method: :post if user.id != current_user.id%></td>
+    <td><%= link_to '詳細', user_path(user.id),class:"btn btn-primary"%></td>
+    <% if current_user.id == user.id %>
+    <td><%= link_to 'マイページ編集', edit_user_registration_path(user.id),class:"btn btn-success"%></td>
+    <% end %>
+    <% if current_user.id != user.id%>
+    <td><%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: user.id), method: :post,class:"btn btn-warning"%></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

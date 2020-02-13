@@ -1,8 +1,48 @@
-<% if @over_ten %>
+<%if false %><% if @over_ten %>
   <%= link_to '以前のメッセージ', '?m=all'%>
-<% end %>
+<% end %><% end %>
 <!--メッセージが10件以上あれば以前のメッセージへのリンクを表示する-->
 
+<div class = "ui segment">
+  <% @messages.each do |message| %>
+    <% if message.body.present? %>
+      <div class = "balloon_container">
+      <% if current_user.id == message.user.id %>
+        <div class = "balloon_right"><!--吹き出しを右にする。-->
+      <% else %>
+        <div class = "balloon_left"><!--吹き出しを左にする-->
+      <% end %>
+          <div class = "content">
+            <div class = "header"><strong><%= message.user.name %></strong><%= message.message_time %></div>
+              <span><%= message.body %></span>
+      
+              <% if message.user == current_user %>
+                <%= message.read ? '既読' : '未読' %>
+                <!--trueは既読,falseなら未読-->
+              <% end %>
+          </div>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= form_with(model: [@conversation, @message]) do |f| %>
+<!--会話にひもづくメッセージの入力フォームを生成する-->
+  <div class = "field">
+    <%= f.text_area :body,class: "form-control"%>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
+  <div>
+    <%= f.submit "メッセージを送る"%>
+  </div>
+<% end %>
+
+
+
+<% if false%>
 <div class = "ui segment">
   <% @messages.each do |message| %>
     <% if message.body.present? %>
@@ -25,15 +65,4 @@
     <% end %>
   <% end %>
 </div>
-
-
-<%= form_with(model: [@conversation, @message]) do |f| %>
-<!--会話にひもづくメッセージの入力フォームを生成する-->
-  <div class = "field">
-    <%= f.text_area :body,class: "form-control"%>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
-  <div>
-    <%= f.submit "メッセージを送る"%>
-  </div>
 <% end %>

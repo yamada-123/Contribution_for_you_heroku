@@ -13,11 +13,11 @@ class MessagesController < ApplicationController
     # render :index
     # @over_ten = over? ? true : false @over_tenに事前に何か文字を入れる。
     #@over_tenは、
-    if @messages.length > 10
-      @over_ten = true
-      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
-      #メッセージの数が10より多ければ、メッセージの最新の10件取得する
-    end
+    # if @messages.length > 10
+    #   @over_ten = true
+    #   @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+    #   #メッセージの数が10より多ければ、メッセージの最新の10件取得する
+    # end
 
     # 必ずしもparamsをつかう必要ある？あるならbooleanだと分かるようにunder_ten_messages? などにするべき
     if params[:m]

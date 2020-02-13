@@ -1,9 +1,8 @@
 <h1>困り事投稿お気に入り一覧</h1>
-<table>
+<table class = "table">
   <tr>
     <th>投稿者</th>
     <th>タイトル</th>
-    <th>内容</th>
     <th>写真</th>
   </tr>
 
@@ -11,8 +10,8 @@
   <tr>
     <td><%= favorite_demands_demand.user.name %></td>
     <td><%= favorite_demands_demand.title %></td>
-    <td><%= favorite_demands_demand.content %></td>
     <td><%= image_tag(favorite_demands_demand.picture.url) if favorite_demands_demand.picture && favorite_demands_demand.picture.url%></td>
+    <td><%= link_to '詳細',demand_path(favorite_demands_demand.id),class: "btn btn-primary"%></td>
   </tr>
 </table>
 <% end %>

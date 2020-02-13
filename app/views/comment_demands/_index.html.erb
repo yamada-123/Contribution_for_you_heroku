@@ -9,8 +9,10 @@
       <tr>
         <td><%= comment_demand.user.name %></td>
         <td><%= comment_demand.content %></td>
-        <td><%= link_to "コメントを編集する",edit_demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id)if current_user.id == comment_demand.user_id%></td>
-        <td><%= link_to "コメントを削除する",demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id),method: :delete if current_user.id == comment_demand.user_id%></td>
+        <% if current_user.id == comment_demand.user_id %>
+        <td><%= link_to "編集",edit_demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id),class:"btn btn-success"%></td>
+        <td><%= link_to "削除",demand_comment_demand_path(id: comment_demand.id, demand_id: comment_demand.demand_id),method: :delete,class:"btn btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
   <% end %>
