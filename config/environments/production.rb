@@ -106,5 +106,5 @@ Rails.application.configure do
   # }
   # host = 'localhost'
   # Rails.application.routes.default_url_options[:host] = host
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'https://mighty-stream-12227.herokuapp.com/' }
 end

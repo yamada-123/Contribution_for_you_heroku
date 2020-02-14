@@ -63,6 +63,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def after_inactive_sign_up_path_for(resource)
+    user_path(resource)                   
+  end
+
   protected
   
   def update_resource(resource, params)
