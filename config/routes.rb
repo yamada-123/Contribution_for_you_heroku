@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get 'comment_demands/create'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #devise_for :users
-#   devise_for :users, :controllers => {
-#  :registrations => 'users/registrations'
-# }
-devise_for :users, :controllers => {
-  :registrations => 'registrations'
- }
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+   }
+   devise_for :users, :controllers => {
+     :registrations => 'registrations'
+    }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'demands#index' #deviseでログインした後のページへ飛ぶ
 
