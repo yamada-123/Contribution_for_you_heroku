@@ -21,7 +21,7 @@
   <div class = "supply_picture">
     <%= form.label :picture %>
     <!--確認画面から新規作成画面に戻った時に、アップロードした画像を表示させるための記述-->
-    <%= image_tag(@supply.picture.url) if @supply.picture && @supply.picture.url %>  
+    <!--<%= image_tag(@supply.picture.url) if @supply.picture && @supply.picture.url %>  -->
     <!-- です。-->
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>

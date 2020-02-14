@@ -1,7 +1,7 @@
 class Demand < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
-  mount_uploader :picture, ImageUploader
+  mount_uploader :picture, PictureUploader
   #mount_uploaderは、画像アップロードの宣言
   #ImageUploaderは、ファイル内の設定を元にアップロードすることを意味している。
   belongs_to :user 

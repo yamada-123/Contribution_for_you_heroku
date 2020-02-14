@@ -26,7 +26,7 @@
 
   <tr>
     <td><%= user.name %></td>
-    <td><%= image_tag(user.picture.url) if user.picture && user.picture.url  %></td>
+    <td><%= image_tag(user.picture.url,id: :img_prev) if user.picture && user.picture.url  %></td>
     <td><%= display_region(user.region) %></td>
     <td><%= user.email %></td>
     <td><%= link_to '詳細', user_path(user.id),class:"btn btn-primary"%></td>

@@ -4,7 +4,7 @@
 <div class = "panel panel-success">
   <div class = "panel-heading">ユーザー情報</div>
   <div class = "panel_body">
-    <p><%= image_tag(@user.picture.url) if @user.picture && @user.picture.url %></p>
+    <p><%= image_tag(@user.picture.url,id: :img_prev) if @user.picture && @user.picture.url %></p>
     <p><strong>名前:</strong><%= @user.name %></p>
     <p><strong>地域:</strong><%= display_region(@user.region) %></p>
     <p><strong>自己紹介</strong></p>

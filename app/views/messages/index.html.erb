@@ -13,11 +13,14 @@
         <div class = "balloon_left"><!--吹き出しを左にする-->
       <% end %>
           <div class = "content">
-            <div class = "header"><strong><%= message.user.name %></strong><%= message.message_time %></div>
+            <div class = "header"><%= message.message_time %><strong><%= message.user.name %></strong></div>
               <span><%= message.body %></span>
-      
+            <div>
+              <%= link_to image_tag(message.user.picture.url,class:"icon"),user_path(message.user.id) %>
+            </div>
               <% if message.user == current_user %>
                 <%= message.read ? '既読' : '未読' %>
+                <td><%= link_to '削除',conversation_message_path(id: message.id), method: :delete %></td>
                 <!--trueは既読,falseなら未読-->
               <% end %>
           </div>

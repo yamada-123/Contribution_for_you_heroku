@@ -22,7 +22,6 @@
     <!--checked:label[:checked],disabled:label[:disabled]の記述でチェックがついたときに(label[:id]に入っている値を送れる)-->
     <!--include_hidden:falseは、チェックのつかなかったラベルの値を送信しないようにする記述。-->
   <button type="submit" class="btn btn-primary">検索</button>
-
   <% end %>
 
 <table class = "table">
@@ -38,7 +37,7 @@
     <td><%= demand.user.name%></td>
     <td><%= demand.title %></td>
     <td><%= image_tag(demand.picture.url)if demand.picture && demand.picture.url %></td>
-      <% demand.labels.each do |label| %>
+      <% demand.labels.each do |label| %>#
       <td><%= label.category%></td>
       <% end %>
     <td><%= link_to '詳細',demand_path(demand.id),class:"btn btn-primary" %></td>

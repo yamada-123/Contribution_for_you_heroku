@@ -16,7 +16,12 @@
 
   <div class="picture_field">
     <%= f.label :picture %><br />
-    <%= image_tag(@user.picture.url) if @user.picture && @user.picture.url %>
+    <% if @user.picture.present? %>
+      <%= image_tag @user.picture.url%>
+    <% else %>
+      <%= image_tag "default.png",id: :img_prev %>
+    <% end %>
+    <!--<%= image_tag(@user.picture.url) if @user.picture && @user.picture.url %>-->
     <%= f.file_field :picture, autofocus: true, autocomplete: "picture" %>
   </div>
 
