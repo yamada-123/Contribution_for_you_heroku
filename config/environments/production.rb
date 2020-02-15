@@ -53,6 +53,8 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-  # host = 'localhost'
-  # Rails.application.routes.default_url_options[:host] = host
+
+
+  config.action_mailer.default_url_options = { host: 'damp-reef-84608.herokuapp.com'}
+  config.action_mailer.delivery_method = :letter_opener
 end

@@ -37,8 +37,8 @@ Rails.application.routes.draw do
   resources :favorite_demands
   resources :favorite_supplies
 
-  if Rails.env.development?
+  # if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  # end
 
 end
