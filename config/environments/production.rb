@@ -41,7 +41,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
 
-  config.action_mailer.default_url_options = { host: 'damp-reef-84608.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://serene-brook-92035.herokuapp.com/' }
   
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
