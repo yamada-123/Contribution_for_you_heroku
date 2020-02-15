@@ -56,5 +56,5 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { host: 'damp-reef-84608.herokuapp.com'}
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
 end
