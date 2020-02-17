@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   #devise_for :usersにより、「ログイン・新規登録」で必要なルーティングが生成される。
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'demands#index' #deviseでログインした後のページへ飛ぶ
-  root 'tops#index'
+  # root 'tops#index'
+  root 'users#show(user.id)'
 
   resources :demands do
     resources :comment_demands
