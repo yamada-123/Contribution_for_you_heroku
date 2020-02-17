@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates :email,presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,:confirmable
+  devise  :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable
 
  has_many :demands,dependent: :destroy #ユーザーを削除したら投稿したdemands内容も一緒に削除される。
  has_many :favorite_demands, dependent: :destroy #ユーザーを削除したらユーザーのお気に入り情報も削除される。

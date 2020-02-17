@@ -1,5 +1,8 @@
+<% if current_user.try(:admin?) %>
+  <h1>ユーザー一覧(管理者でログインしています。)</h1>
+<% else %>
 <h1>ユーザー一覧</h1>
-
+<% end %>
 <%= search_form_for @search do |f| %>
   <%= f.label :name, "名前" %>
   <%= f.search_field :name_cont %>
