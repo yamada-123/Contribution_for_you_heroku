@@ -4,7 +4,10 @@ ja:
       blog: "ブログ"
       user: "ユーザー"
     attributes:
-      blog:
+      demand:
+        title: "タイトル"
+        content: "内容"
+      supply:
         title: "タイトル"
         content: "内容"
       contact:

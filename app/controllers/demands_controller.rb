@@ -60,7 +60,6 @@ class DemandsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     #@demand = Demand.find(params[:id])
     @demand.destroy
     redirect_to demands_path, notice:"困り事を削除しました!"

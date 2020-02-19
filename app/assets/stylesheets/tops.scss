@@ -38,12 +38,12 @@ footer {
   margin: auto;
   padding-bottom: 10px;
   font-size: 12px;
-  position: relative;
+  position: absolute;
   bottom: 0;
 }
 
 html {
-  position: relative;
+  // position: relative;
   min-height: 100%;
 }
 
@@ -52,16 +52,20 @@ body {
   text-align: center;
 }
 
-// .wrapper {
-//   height: 100%;
-//   min-height: 100vh;
-//   position: relative;
-//   /*←相対位置*/
-//   padding-bottom: 120px;
-//   /*←footerの高さ*/
-//   box-sizing: border-box;
-//   /*←全て含めてmin-height:100vhに*/
-// }
+.wrapper {
+  // height: 100%;
+  min-height: 100vh;
+  position: relative;
+  /*←相対位置*/
+  padding-bottom: 120px;
+  // /*←footerの高さ*/
+  box-sizing: border-box;
+  // /*←全て含めてmin-height:100vhに*/
+}
+
+.container {
+  min-height: 100%;
+}
 
 .demand_picture {
   display: inline-block
@@ -75,6 +79,60 @@ body {
   display: inline-block
 }
 
+#user_img {
+  display: inline-block
+}
+
+.user_picture {
+  display: inline-block
+}
+
 .dropdown-menu {
   padding: 3px 40px;
+}
+
+.uk-position-relative {
+  position: relative;
+}
+
+.uk-position-relative h1 {
+  position: absolute;
+  color: black;
+  top: 0;
+  left: 0;
+}
+
+.uk-position-relative h4 {
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+}
+
+.uk-position-relative img {
+  width: 100%;
+}
+
+.uk-position-relative #button_skill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  /*太字に*/
+  font-size: 2em;
+  /*サイズ2倍*/
+}
+
+.uk-position-relative #button_demand {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  /*太字に*/
+  font-size: 2em;
+  /*サイズ2倍*/
 }

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
+ has_many :messages,dependent: :destroy
+ has_many :supplies,dependent: :destroy
  has_many :demands,dependent: :destroy #ユーザーを削除したら投稿したdemands内容も一緒に削除される。
  has_many :favorite_demands, dependent: :destroy #ユーザーを削除したらユーザーのお気に入り情報も削除される。
  has_many :favorite_supplies, dependent: :destroy

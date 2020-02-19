@@ -1,6 +1,11 @@
 FactoryBot.define do
-  factory :labelling_supply do
-    label_id { 1 }
-    supply_id { 1 }
+  factory :first_labelling_supply,class: LabellingSupply do
+    supply_id { Supply.first.id }
+    label_id {  Label.first.id }
+  end
+
+  factory :second_labelling_supply,class: LabellingSupply do
+    supply_id { Supply.last.id }
+    label_id { Label.last.id}
   end
 end

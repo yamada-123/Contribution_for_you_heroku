@@ -2,8 +2,6 @@
   <%= link_to '以前のメッセージ', '?m=all'%>
 <% end %><% end %>
 <!--メッセージが10件以上あれば以前のメッセージへのリンクを表示する-->
-
-<div class = "ui segment">
   <% @messages.each do |message| %>
     <% if message.body.present? %>
       <div class = "balloon_container">
@@ -26,18 +24,16 @@
           </div>
         </div>
         </div>
-      </div>
     <% end %>
   <% end %>
-</div>
 
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
 <!--会話にひもづくメッセージの入力フォームを生成する-->
   <div class = "field">
     <%= f.text_area :body,class: "form-control"%>
-  </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
+  </div>
   <div>
     <%= f.submit "メッセージを送る"%>
   </div>
@@ -67,5 +63,4 @@
       </div>
     <% end %>
   <% end %>
-</div>
 <% end %>

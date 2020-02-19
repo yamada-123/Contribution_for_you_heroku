@@ -1,8 +1,26 @@
-<div class="whole">
+<div class = uk-position-relative>
+	<%= image_tag "d6b5825353926a566894bef6e77fb7c8_m.jpg",id: :img_prev2%>
+<h1>Contribution for you</h1>
+<h4>日々の小さな悩みを助け合おう</h4>
+	<%= link_to "スキルを投稿する",new_supply_path,id: :button_skill,class:"btn btn-warning" %>
+	<%= link_to "困り事を投稿する",new_demand_path, id: :button_demand,class:"btn btn-success" %>
+</div>
+
+	<h3>周りには言えない悩みを聞いてほしいなど、生活に関するサービスを受けたい人と提供したい人を繋げるアプリです。</h3>
+
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-xs-4"><%= image_tag "default.png", id: :img_prev %></div>	
+			<div class = "col-xs-4"><%= image_tag "default.png", id: :img_prev%></div>	
+			<div class = "col-xs-4"><%= image_tag "default.png", id: :img_prev%></div>	
+		</div>
+	</div>
 
 
-    <section class="top-recruit" id="start"> 
-        <h2><%= link_to 'Start',new_user_registration_path %></h2>
-        <div class="top-bg2"></div>
-    </section>
- </div>
+<div class = "container">
+		<div class = "row">
+			<div class = "col-xs-4">相談や周りには言えない悩みなど</div>	
+			<div class = "col-xs-4">英語力をあげたい、英語のスキルを生かしたい時に</div>	
+			<div class = "col-xs-4">誰かとチャットで話したい時に</div>	
+		</div>
+	</div>

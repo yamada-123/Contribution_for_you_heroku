@@ -10,9 +10,9 @@
   <tr>
     <td><%= favorite_demands_demand.user.name %></td>
     <td><%= favorite_demands_demand.title %></td>
-    <td><%= image_tag(favorite_demands_demand.picture.url) if favorite_demands_demand.picture && favorite_demands_demand.picture.url%></td>
+    <td><%= image_tag(favorite_demands_demand.picture.url,id: :img_prev) if favorite_demands_demand.picture && favorite_demands_demand.picture.url%></td>
     <td><%= link_to '詳細',demand_path(favorite_demands_demand.id),class: "btn btn-primary"%></td>
   </tr>
-</table>
 <% end %>
+</table>
 <p><%= link_to '困り事一覧へ',demands_path %></p>

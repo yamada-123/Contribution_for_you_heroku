@@ -10,7 +10,7 @@
   <tr>
     <td><%= favorite_supplies_supply.user.name %></td>
     <td><%= favorite_supplies_supply.title %></td>
-    <td><%= image_tag(favorite_supplies_supply.picture.url) if favorite_supplies_supply.picture && favorite_supplies_supply.picture.url %></td>
+    <td><%= image_tag(favorite_supplies_supply.picture.url,id: :img_prev) if favorite_supplies_supply.picture && favorite_supplies_supply.picture.url %></td>
     <td><%= link_to '詳細',supply_path(favorite_supplies_supply.id),class: "btn btn-primary"%></td>
   </tr>
 <% end %>

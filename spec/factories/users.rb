@@ -6,8 +6,8 @@ FactoryBot.define do
     password_confirmation {'foober'}
     picture{Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'))}
     introduction {'はじめまして1'}
-    region {'日本'}
-    confirmed_at { Date.today }
+    region {'日本1'}
+    #confirmed_at { Date.today }
     admin {'true'}
   end
   factory :second_user, class: User do
@@ -18,7 +18,7 @@ FactoryBot.define do
     picture{Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/PPP_sanpocyunopomeranian_TP_V.jpg'))}
     introduction {'はじめまして2'}
     region {'日本2'}
-    confirmed_at { Date.today }
+    #confirmed_at { Date.today }
     admin {'false'}
   end
 end

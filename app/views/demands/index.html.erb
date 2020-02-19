@@ -36,14 +36,14 @@
   <tr>
     <td><%= demand.user.name%></td>
     <td><%= demand.title %></td>
-    <td><%= image_tag(demand.picture.url)if demand.picture && demand.picture.url %></td>
+    <td><%= image_tag(demand.picture.url,id: :img_prev)if demand.picture && demand.picture.url %></td>
       <% demand.labels.each do |label| %>#
       <td><%= label.category%></td>
       <% end %>
     <td><%= link_to '詳細',demand_path(demand.id),class:"btn btn-primary" %></td>
       <% if current_user.id == demand.user_id %>
     <td><%= link_to '編集', edit_demand_path(demand.id) ,class:"btn btn-success" %></td>
-    <td><%= link_to '削除',demand_path(demand.id),class:"btn btn-danger",method: :delete ,data: { confirm: '本当に削除しますか?' }  %></td>
+    <td><%= link_to '削除',demand_path(demand.id),class:"btn btn-danger",method: :delete  %></td>
       <% end %>
     
   </tr>

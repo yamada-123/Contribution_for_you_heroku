@@ -6,13 +6,15 @@
 
   <div class="picture_field">
     <%= f.label :picture %><br />
+    <div class = "default_field">
     <% if @user.picture.present? %>
       <%= image_tag @user.picture.url%>
     <% else %>
       <%= image_tag "default.png",id: :img_prev %>
     <% end %>
+    </div>
     <!--<%= image_tag(@user.picture.url) if @user.picture && @user.picture.url %>-->
-    <%= f.file_field :picture, autofocus: true, autocomplete: "picture" %>
+    <%= f.file_field :picture,id: :user_img,  autofocus: true, autocomplete: "picture" %>
   </div>
   
   <div class = "field">
@@ -44,4 +46,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!--<%= render "devise/shared/links" %>-->

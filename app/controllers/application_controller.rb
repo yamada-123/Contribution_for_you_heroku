@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
   def after_sign_in_path_for(resource)
-    user_path(@user.id)
+    users_path
   end
   protected
   #deviseのストロングパラメーター追加(deviseコントローラーはgem本体にあるため、代わりにapplication_controller.rbで編集)
