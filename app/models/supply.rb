@@ -1,6 +1,8 @@
 class Supply < ApplicationRecord
   validates :title,presence: true
+  validates :title, length: { maximum:50}
   validates :content,presence: true
+  validates :content, length: { maximum:200}
   mount_uploader :picture, ImageUploader
   #mount_uploaders:画像アップロードの宣言
   #Imageuploader:Imageuploaderファイル内の設定を元にアップロードすることを意味している。

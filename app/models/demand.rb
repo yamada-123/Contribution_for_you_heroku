@@ -1,6 +1,8 @@
 class Demand < ApplicationRecord
   validates :title, presence: true
+  validates :title, length: { maximum:50 }
   validates :content, presence: true
+  validates :content, length: { maximum:200}
   # mount_uploader :picture, PictureUploader
   mount_uploader :picture, ImageUploader
   #mount_uploaderは、画像アップロードの宣言
