@@ -19,11 +19,11 @@
 
 <table class = "table">
   <tr>
-  <!-- <th><%= sort_link(@search, :name) %></th> -->
-    <th>名前</th>
+  <!-- <th><%= sort_link(@search, :name,"名前") %></th> -->
+    <th>名前 </th>
     <th>写真</th>
     <th><%= sort_link(@search, :region) %></th>
-    <th>メールアドレス</th>
+    <th><%= sort_link(@search, :email)%></th>
   </tr>
   
 <% @users.each do |user| %>

@@ -1,5 +1,5 @@
 <h1> <%= @demand.title %></h1>
-<p> <%= image_tag @demand.picture.url if @demand.picture && @demand.picture.url%></p>
+<p> <%= image_tag(@demand.picture.url,id: :img_prev) if @demand.picture && @demand.picture.url%></p>
 
 <div class = "panel panel-primary">
   <div class = "panel-heading">詳細情報</div>
@@ -16,7 +16,7 @@
 <div class = "panel panel-success">
   <div class = "panel-heading">投稿主情報</div>
     <div class = "panel_body">
-      <p><%= image_tag @demand.user.picture.url if @demand.user.picture && @demand.user.picture.url %></p>
+      <p><%= image_tag(@demand.user.picture.url,id: :img_prev) if @demand.user.picture && @demand.user.picture.url %></p>
       <p><%= link_to @demand.user.name,user_path(id: @demand.user_id) %></p>
       <p><strong>自己紹介</strong></p>
       <p><%= @demand.user.introduction %></p>

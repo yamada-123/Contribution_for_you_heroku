@@ -24,6 +24,7 @@
   <button type="submit" class="btn btn-primary">検索</button>
   <% end %>
 
+
 <table class = "table">
   <tr>
     <th><%= sort_link(@search, :user_name,"投稿者") %></th>
@@ -36,16 +37,17 @@
   <tr>
     <td><%= demand.user.name%></td>
     <td><%= demand.title %></td>
-    <td><%= image_tag(demand.picture.url,id: :img_prev)if demand.picture && demand.picture.url %></td>
-      <% demand.labels.each do |label| %>#
-      <td><%= label.category%></td>
+    <td><%= image_tag(demand.picture.url,id: :img_prev) if demand.picture && demand.picture.url %></td>
+    <td>
+      <% demand.labels.each do |label| %>
+        <p><%= label.category%></p>
       <% end %>
+    </td>
     <td><%= link_to '詳細',demand_path(demand.id),class:"btn btn-primary" %></td>
-      <% if current_user.id == demand.user_id %>
-    <td><%= link_to '編集', edit_demand_path(demand.id) ,class:"btn btn-success" %></td>
-    <td><%= link_to '削除',demand_path(demand.id),class:"btn btn-danger",method: :delete  %></td>
-      <% end %>
-    
+    <% if current_user.id == demand.user_id %>
+      <td><%= link_to '編集', edit_demand_path(demand.id) ,class:"btn btn-success" %></td>
+      <td><%= link_to '削除',demand_path(demand.id),class:"btn btn-danger",method: :delete  %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

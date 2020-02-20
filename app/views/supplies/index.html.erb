@@ -37,9 +37,11 @@
     <td><%= supply.user.name%></td>
     <td><%= supply.title %></td>
     <td><%= image_tag(supply.picture.url,id: :img_prev)if supply.picture && supply.picture.url %></td>
+    <td>
       <% supply.labels.each do |label| %>
-        <td><%= label.category%></td>
+        <p><%= label.category%></p>
       <% end %>
+    </td>
 
     <td><%= link_to '詳細', supply_path(supply.id),class:"btn btn-primary" %></td>
       <% if current_user.id == supply.user_id %>

@@ -23,8 +23,13 @@
     <!--確認画面から新規作成画面に戻った時に、アップロードした画像を表示させるための記述-->
     <!--<%= image_tag(@supply.picture.url) if @supply.picture && @supply.picture.url %>  -->
     <!-- です。-->
+    <div class = "default_field">
+    <%= image_tag(@supply.picture.url,id: :img_prev) if @supply.picture && @supply.picture.url %>
+    </div>
+    <div class = "supply_picture2">
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>
+    </div>
   </div>
     <div class="field">
     <% Label.all.each do |label| %>

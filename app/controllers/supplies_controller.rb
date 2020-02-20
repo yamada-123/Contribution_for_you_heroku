@@ -1,13 +1,14 @@
 class SuppliesController < ApplicationController
   before_action :set_supply, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! #ログインユーザーのみアクセス許可
-  PER = 2
+  PER = 5
   def index
     # @supplies = Supply.page(params[:page]).per(PER)
 
     @search = Supply.ransack(params[:q])
     # params[q]には検索パラメーターが渡されるため、@searchという検索オブジェクトが作成される。
-    @supplies = @search.result.includes(:user).page(params[:page]).per(PER)
+    @labels = Label.all
+    @supplies = @search.result.includes(:labels,:user).page(params[:page]).per(PER)
   end
 
   def new

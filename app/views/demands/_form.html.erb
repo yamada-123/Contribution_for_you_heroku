@@ -18,13 +18,19 @@
     <%= form.label :content%>
     <%= form.text_area :content %>
   </div>
+
   <div class = "demand_picture">
     <%= form.label :picture %>
     <!-- 確認画面から新規作成画面に戻った時にアップロードした画像を表示させるための記述-->
-    <%= image_tag(@demand.picture.url) if @demand.picture && @demand.picture.url %>
+    <div class = "default_field">
+    <%= image_tag(@demand.picture.url,id: :img_prev) if @demand.picture && @demand.picture.url %>
+    </div>
+    <div class = "demand_picture2">
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>
+    
   </div>
+
   <div class="field">
     <% Label.all.each do |label| %>
     <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
