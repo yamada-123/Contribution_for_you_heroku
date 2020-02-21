@@ -31,7 +31,7 @@
   <% end %>
 <% end %>
 <br>
-<%= link_to "#{@supply.user.name}にメッセージ",conversations_path(sender_id: current_user.id,recipient_id: @supply.user_id), method: :post if @supply.user_id != current_user.id%>
+<%= link_to "#{@supply.user.name}さんにメッセージ",conversations_path(sender_id: current_user.id,recipient_id: @supply.user_id),class: 'btn btn-warning', method: :post if @supply.user_id != current_user.id%>
 <br><br><br><br><br>
 <strong>コメント一覧</strong>
 <div id = "comment_supplies_area">

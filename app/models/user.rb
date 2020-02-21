@@ -4,8 +4,9 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :email, uniqueness: true #同じemailの登録を禁止する記述
-  validates :password, length: {maximum:10}
+  validates :password, length: {maximum:30}
   validates :email,presence: true
+  validates :introduction,length: {maximum: 300}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,

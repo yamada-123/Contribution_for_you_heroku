@@ -3,7 +3,9 @@
 <% else %>
 <h1>困り事一覧</h1>
 <% end %>
+<div class="alert alert-success" role="alert">
 <p><%= notice %></p>
+</div>
 
   <%= search_form_for @search do |f| %>
     <%= f.label :title, "タイトル" %>
@@ -25,7 +27,7 @@
   <% end %>
 
 
-<table class = "table">
+<table class = "table table-striped">
   <tr>
     <th><%= sort_link(@search, :user_name,"投稿者") %></th>
     <th><%= sort_link(@search, :title,"タイトル") %></th>

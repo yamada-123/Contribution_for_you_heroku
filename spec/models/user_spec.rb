@@ -44,4 +44,9 @@ RSpec.describe User, type: :model do
     user = User.new(name: 'テスト1',email: 'amano1@example.com',password: 'foober')
     expect(user).not_to be_valid
   end
+
+  it 'introductionが301文字以上ならバリデーションが通らない' do
+    user = User.new(name: 'テスト1',email: 'amano2@example.com',password: 'foober',introduction: 'a'*301)
+    expect(user).not_to be_valid
+  end
 end

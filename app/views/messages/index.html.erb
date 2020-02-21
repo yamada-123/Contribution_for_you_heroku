@@ -13,6 +13,9 @@
           <div class = "content">
             <div class = "header"><%= message.message_time %><strong><%= message.user.name %></strong></div>
               <span><%= message.body %></span>
+              <div class = "name">
+                <%= message.user.name%>
+              </div>
             <div>
               <%= link_to image_tag(message.user.picture.url,class:"icon"),user_path(message.user.id) %>
             </div>
