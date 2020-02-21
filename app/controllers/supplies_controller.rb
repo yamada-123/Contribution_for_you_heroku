@@ -25,7 +25,7 @@ class SuppliesController < ApplicationController
         # binding.pry
     #Supply.create(params[:supply])
     #Supply.create(title: params[:supply][:title],content: params[:supply][:content],picture: params[:supply][:picture])
-        redirect_to new_supply_path, notice: 'スキルを投稿しました。'
+        redirect_to supplies_path, notice: 'スキルを投稿しました。'
       else
         render :new
       end
