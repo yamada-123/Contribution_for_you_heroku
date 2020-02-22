@@ -15,9 +15,11 @@ gem 'ransack'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'faker'
-gem 'dotenv-rails'
 #AWS
+gem 'dotenv-rails'
 gem 'fog-aws'
+gem 'unicorn' # アプリケーションサーバのunicorn
+gem 'mini_racer', platforms: :ruby # デプロイ時に必要
 #gem 'kaminari-bootstrap', '~> 3.0.1'
 # Bundle edge Rails instea: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -65,6 +67,11 @@ group :development, :test do
   gem 'faker'
   gem 'launchy'
   gem 'dotenv-rails'
+  gem 'capistrano', '3.6.0' # capistranoのツール一式
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
