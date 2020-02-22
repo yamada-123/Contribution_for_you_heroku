@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
       redirect_to conversation_messages_path(@conversation)
       #保存されたら、会話にひもづくチャットルームに遷移する
     else
-      render 'index'
+      redirect_to conversation_messages_path,alert: "投稿できません(空欄 or 200文字以上は入力できません。)"
     end
   end
 

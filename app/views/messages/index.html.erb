@@ -1,7 +1,13 @@
-<%if false %><% if @over_ten %>
+<% if false%>
+<% if @over_ten %>
   <%= link_to '以前のメッセージ', '?m=all'%>
-<% end %><% end %>
+<% end %>
+<% end %>
 <!--メッセージが10件以上あれば以前のメッセージへのリンクを表示する-->
+
+
+<h1><%= User.find(@conversation.recipient_id).name%>さんへメッセージ</h1>
+
   <% @messages.each do |message| %>
     <% if message.body.present? %>
       <div class = "balloon_container">
@@ -38,7 +44,7 @@
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
   </div>
   <div>
-    <%= f.submit "メッセージを送る"%>
+    <button type="submit" class="btn btn-primary">送信</button>
   </div>
 <% end %>
 

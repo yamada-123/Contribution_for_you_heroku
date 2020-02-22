@@ -12,9 +12,10 @@
   <p>タイトル:<%= @demand.title %></p>
   <p>内容: <%= @demand.content %></p>
   <!--確認画面でアップロードした画像を表示させるための記述-->
-  <p><%= image_tag(@demand.picture.url,id: :img_prev) if @demand.picture && @demand.picture.url %></p<%=>
-  <p>ラベル:<% @demand.labels.each  do |label| %><%= label.category %><%= "。"%><% end %></p>
-  <%= form.submit "困り事を投稿する"%>
+  <p><%= image_tag(@demand.picture.url,id: :img_prev) if @demand.picture && @demand.picture.url %></p>
+  <p>カテゴリ</p>
+  <p><% @demand.labels.each  do |label| %><%= label.category %><%= "。"%><% end %></p>
+    <button type="submit" class="btn btn-primary">投稿</button>
 <% end %>
   
 <%= form_with(model: @demand, url: new_demand_path, local: true, method: "get") do |form| %>

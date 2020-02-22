@@ -1,13 +1,19 @@
 <%= form_with(model: @demand, local: true, url: choose_new_or_edit_demands ) do |form| %>
   <% if @demand.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @demand.errors.count %>件のエラーがあります</h2>
+      <div class = "panel panel-danger">
+        <div class = "panel-heading">
+          <h2><%= @demand.errors.count %>件のエラーがあります</h2>
+        </div>
       <ul>
       <% @demand.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <div class = "panel-body">
+          <h4><%= msg %></h4>
+        </div>
       <% end %>
-      </ul>
+      </div>
     </div>
+      </ul>    
   <% end %>
 
   <div class = "demand_title" >
@@ -28,8 +34,7 @@
     <div class = "demand_picture2">
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>
-    
-  </div>
+    </div>
   <div class="field">
     <% Label.all.each do |label| %>
     <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
@@ -39,7 +44,7 @@
     <!--include_hidden:falseは、チェックのつかなかったラベルの値を送信しないようにする記述。-->
     <label class='badge badge-secondary'><%= label.category %></label>
     <% end %>
-</div>
+  </div>
 
   <button type="submit" class="btn btn-primary">投稿</button>
 <% end %>

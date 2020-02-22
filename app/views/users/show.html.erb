@@ -12,5 +12,7 @@
   </div>
 </div>
 
-<%= link_to 'プロフィール編集',edit_user_registration_path,class:"btn btn-warning" %>
-
+<%= link_to 'プロフィール編集',edit_user_registration_path,class:"btn btn-warning" if current_user.id == @user.id  %>
+   <% if current_user.id != @user.id%>
+    <td><%= link_to 'メッセージ',conversations_path(sender_id: current_user.id,recipient_id: @user.id), method: :post,class:"btn btn-warning"%></td>
+    <% end %>

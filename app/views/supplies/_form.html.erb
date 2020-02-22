@@ -1,12 +1,18 @@
 <%= form_with(model: @supply, local: true, url: choose_new_or_edit_supplies ) do |form| %>
   <% if @supply.errors.any? %>
     <div id = "error_explanation">
+      <div class = "panel panel-danger">
+        <div class = "panel-heading">
       <h2><%= @supply.errors.count %>件のエラーがあります。</h2>
+        </div>
       <ul>
       <% @supply.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <div class = "panel-body">
+          <h4><%= msg %></h4>
+        </div>
       <% end %>
       </ul>
+      </div>
     </div>
   <% end %>
 
@@ -43,6 +49,4 @@
 </div>
   <button type="submit" class="btn btn-primary">投稿</button>
 <% end %>
-
-<%= link_to "スキル一覧画面に戻る", supplies_path %>
     

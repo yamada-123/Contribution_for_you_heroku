@@ -14,14 +14,14 @@ RSpec.describe 'Users' , type: :system do
   it 'メッセージを相手に送信できるテスト' do
     click_on 'メッセージ'
     fill_in('message_body',with: 'メッセージテスト')
-    click_on 'メッセージを送る'
+    click_on '送信'
     expect(page).to have_content('メッセージテスト')
   end
 
   it '自分のメッセージを削除できるテスト' do
     click_on 'メッセージ'
     fill_in('message_body',with: 'メッセージテスト')
-    click_on 'メッセージを送る'
+    click_on '送信'
     click_on '削除'
     expect(page).not_to have_content('メッセージテスト')
   end
