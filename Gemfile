@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 gem 'pry-rails'
+gem 'bundler', '~>2.1.4'
 gem 'letter_opener_web'
 gem 'better_errors'
 gem 'binding_of_caller'
@@ -98,3 +99,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_12factor', group: :production
+gem 'sassc', '2.2.1'
