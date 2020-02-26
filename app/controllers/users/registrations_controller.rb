@@ -66,9 +66,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   #ログイン後
-  def after_inactive_sign_up_path_for(resource)
-    demands_path                  
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   demands_path                  
+  # end
 
   protected
   
