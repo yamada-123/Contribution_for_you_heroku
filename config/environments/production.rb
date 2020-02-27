@@ -69,13 +69,13 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = 
-    ENV['HEROKU'] ? 
+    ENV['HEROKU'] == 'intense-inlet-32914.herokuapp.com' ? 
       { host: 'intense-inlet-32914.herokuapp.com' } :
       { host: '18.180.34.62' }
   
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = 
-  ENV['HEROKU'] ? 
+  ENV['HEROKU'] == 'intense-inlet-32914.herokuapp.com' ? 
     {
       user_name: ENV['SENDGRID_USERNAME'],
       password: ENV['SENDGRID_PASSWORD'],
