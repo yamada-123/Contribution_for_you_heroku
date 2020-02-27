@@ -40,7 +40,8 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
-
+  if domain == "18.180.34.62"
+  
   config.action_mailer.default_url_options = { host: '18.180.34.62' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
@@ -52,8 +53,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-  
-
+else
   config.action_mailer.default_url_options = { host: 'intense-inlet-32914.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
@@ -65,7 +65,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-
+end
 
   
 end
